@@ -1,0 +1,28 @@
+class Solution {
+public:
+    int trap(vector<int>& height) {
+        int n=height.size();
+    vector<int>a(n);
+        vector<int>b(n);
+        for(int i=1;i<n;i++)
+        {
+            a[i]=max(height[i-1], a[i-1]);
+        }
+        for(int j=n-2;j>=0;j--)
+        {
+            b[j]=max(height[j+1],b[j+1]);
+        }
+        int ans=0;
+        int waterlevel;
+        for(int i=0;i<n;i++)
+        {
+            waterlevel=min(a[i],b[i]);
+            if(waterlevel>=height[i])
+            {
+                ans+=waterlevel-height[i];
+            }
+        }
+        return ans;
+    }
+    
+};
