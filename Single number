@@ -6,17 +6,8 @@ public:
        int ans;
        for(int i=0;i<nums.size();i++)
        {
-           a[nums[i]]=1;
+           a[nums[i]]++;
        }
-       
-        for(int i=1;i<nums.size();i++)
-        {
-          if(nums[i]==nums[i-1])
-          {  
-           a[nums[i]]=2;
-          }
-          
-        }
         map<int,int>::iterator i;
         for(i=a.begin();i!=a.end();++i)
         {
