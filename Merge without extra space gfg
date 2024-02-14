@@ -1,14 +1,19 @@
-
-            int i=0, j=0, k=m-1;
-            while(i<=k && j<n) {
-                if(arr1[i]<arr2[j]){
-                    i++;
-                }
-                else {
-                    swap(arr2[j], arr1[k]);
-                    k--;
-                    j++;
-                }
-            }
-            sort(arr1, arr1+m);
-            sort(arr2, arr2+n);
+ void merge(long long arr1[], long long arr2[], int n, int m) 
+        { 
+          int k=0;
+          long long arr3[n+m];
+          for(int i=0;i<n;i++){
+              arr3[k++]=arr1[i];
+          }
+          for(int i=0;i<m;i++){
+              arr3[k++]=arr2[i];
+          }
+          sort(arr3, arr3+n+m);
+          k=0;
+          for(int i=0;i<n;i++){
+              arr1[i]=arr3[k++];
+          }
+          for(int i=0;i<m;i++){
+              arr2[i]=arr3[k++];
+          }
+        } 
