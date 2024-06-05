@@ -1,0 +1,47 @@
+class Solution {
+public:
+    vector<int> findDiagonalOrder(vector<vector<int>>& mat) {
+    vector<int> result;
+    int m = mat.size();
+    if (m == 0) return result;
+    int n = mat[0].size();
+    int r = 0, c = 0;
+    int direction = 1;
+
+    for (int i = 0; i < m * n; i++) {
+        result.push_back(mat[r][c]);
+        
+        if (direction == 1) {
+            if (r - 1 >= 0 && c + 1 < n) {
+                r -= 1;
+                c += 1;
+            }
+            else if (c + 1 < n) {
+                c += 1;
+                direction = -1;
+            }
+            else if (r + 1 < m) {
+                r += 1;
+                direction = -1;
+            }
+        }
+        else {
+            if (r + 1 < m && c - 1 >= 0) {
+                r += 1;
+                c -= 1;
+            }
+            else if (r + 1 < m) {
+                r += 1;
+                direction = 1;
+            }
+            else if (c + 1 < n) {
+                c += 1;
+                direction = 1;
+            }
+        }
+    }
+
+    return result;
+}
+
+};
