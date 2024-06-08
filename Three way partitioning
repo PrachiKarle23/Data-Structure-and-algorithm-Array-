@@ -21,3 +21,9 @@ void threeWayPartition(vector<int>& array,int a, int b)
             array[i]=arr[i];
         }
     }
+
+
+void threeWayPartition(vector<int>& array,int a, int b)
+    {
+        sort(array.begin(),array.end());
+    }
