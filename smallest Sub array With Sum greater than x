@@ -1,0 +1,21 @@
+int smallestSubWithSum(int arr[], int n, int x)
+    {
+        int j=0,currsum=0,i=0,min_len=n+1;
+        while(j<n){
+            
+            while(currsum<=x && j<n){
+                currsum+=arr[j++];
+            }
+            
+            while(currsum>x && i<n){
+                if(j-i<min_len){
+                  min_len=j-i;  
+                }
+                currsum-=arr[i++];
+            }
+        }
+        if(min_len>n){
+            return 0;
+        }
+        return min_len;
+    }
