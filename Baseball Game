@@ -1,0 +1,30 @@
+#include<stdlib.h>
+class Solution {
+public:
+    int calPoints(vector<string>& operations) {
+        vector<int>a;
+        int n=operations.size();
+        for(int i=0;i<n;i++){
+           
+            if(operations[i]=="C"){
+            a.pop_back();
+           }
+           else if(operations[i]=="D"){
+              int val=a[a.size()-1]*2;
+              a.push_back(val);
+           }
+           else if(operations[i]=="+"){
+              int val=a[a.size()-1]+a[a.size()-2];
+              a.push_back(val);
+           }
+           else{
+            a.push_back(stoi(operations[i]));
+           }
+        }
+        int sum=0;
+        for(int i=0;i<a.size();i++){
+            sum+=a[i];
+        }
+        return sum;
+    }
+};
