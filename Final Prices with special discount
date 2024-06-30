@@ -1,0 +1,28 @@
+class Solution {
+public:
+    int find(vector<int>& prices,int s,int e,int val)
+    {
+       while(s<e){
+          if(prices[s]<=val){
+            return prices[s];
+          }
+          s++;
+       }
+       return -1;
+    }
+    vector<int> finalPrices(vector<int>& prices) {
+        int n=prices.size();
+        for(int i=0;i<n;i++){
+            int ans=find(prices,i+1,n,prices[i]);
+            int val;
+            if(ans==-1){
+                val=prices[i];
+            }
+            else{
+               val=prices[i]-ans;
+            }
+            prices[i]=val;
+        }
+        return prices;
+    }
+};
